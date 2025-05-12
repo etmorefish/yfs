@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部落潮玩一番赏</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-blue-100 text-gray-800">
+    <div class="max-w-md mx-auto p-4">
+        <!-- 顶部LOGO -->
+        <div class="flex justify-between items-center mb-4">
+            <img src="https://img.pokemondb.net/artwork/large/pikachu.jpg" alt="Pikachu"
+                class="w-12 h-12 rounded-full" />
+            <h1 class="text-lg font-bold text-center flex-1">部落潮玩一番赏<br><span class="text-sm font-normal">奖品对照表</span>
+            </h1>
+            <img src="https://img.pokemondb.net/artwork/large/charmander.jpg" alt="Charmander"
+                class="w-12 h-12 rounded-full" />
+        </div>
+
+        <!-- 奖项列表 -->
+        <div class="space-y-2">
+            <script>
+                const prizes = [
+                    { name: 'SP 奖', tags: ['151 望吧包'], count: ['1'], redeemed: [] },
+                    { name: 'A 奖', tags: ['151 望吧包'], count: ['1', '2'], redeemed: ['1'] },
+                    { name: 'B 奖', tags: ['151 望吧包'], count: ['1', '2'], redeemed: [] },
+                    { name: 'C 奖', tags: ['151 望吧包'], count: ['1', '2'], redeemed: ['1', '2'] },
+                    { name: 'D 奖', tags: ['151 望吧包'], count: ['1', '2', '3'], redeemed: ['2'] },
+                    { name: 'E 奖', tags: ['151 望吧包'], count: ['1', '2', '3', '4'], redeemed: [] },
+                    { name: 'F 奖', tags: ['151 望吧包'], count: ['1', '2', '3', '4', '5'], redeemed: ['3', '4'] },
+                    { name: 'G 奖', tags: ['151 望吧包'], count: ['1', '2', '3', '4', '5', '6'], redeemed: ['2'] },
+                    { name: 'H 奖', tags: ['151 望吧包'], count: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'], redeemed: ['1', '4', '7'] },
+                ];
+
+                window.addEventListener('DOMContentLoaded', () => {
+                    const container = document.getElementById('prize-list');
+                    prizes.forEach(prize => {
+                        const div = document.createElement('div');
+                        div.className = "bg-white p-2 rounded shadow";
+                        div.innerHTML = `
+              <div class="flex items-center space-x-2 mb-2">
+                <img src="https://img.pokemondb.net/artwork/pikachu.jpg" alt="Pikachu" class="w-10 h-10">
+                <div class="text-sm font-bold">${prize.name}</div>
+                <div class="bg-black text-white px-2 py-1 rounded text-sm">${prize.tags.join(', ')}</div>
+              </div>
+              <div class="flex flex-wrap gap-1">
+                ${prize.count.map(n => `
+                  <div class="w-6 h-6 text-xs flex items-center justify-center font-bold
+                    ${prize.redeemed.includes(n) ? 'bg-gray-600 text-white' : 'bg-white'}
+                    border border-gray-300"
+                    style="clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%)">
+                    ${n}
+                  </div>`).join('')}
+              </div>
+            `;
+                        container.appendChild(div);
+                    });
+                });
+            </script>
+            <div id="prize-list"></div>
+        </div>
+
+        <!-- 底部说明 -->
+        <div class="mt-6 text-xs text-gray-600 text-center">
+            消费满 <span class="font-bold text-red-500">200元</span> 赠送一张<br>
+            奖券有效期：<span class="font-bold">30天</span> 内使用有效
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>部落潮玩一番赏</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5A5F',
+                        secondary: '#00A699',
+                        accent: '#FC642D',
+                        dark: '#484848',
+                        light: '#F7F7F7'
+                    },
+                    fontFamily: {
+                        sans: ['"PingFang SC"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'prize': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .prize-category {
+                @apply relative inline-block px-4 py-2 font-bold rounded-lg mb-3 text-white;
+                background: linear-gradient(135deg, #FF5A5F 0%, #FC642D 100%);
+                box-shadow: 0 4px 6px -1px rgba(255, 90, 95, 0.3), 0 2px 4px -1px rgba(255, 90, 95, 0.2);
+            }
+            .prize-category::after {
+                content: '';
+                @apply absolute -bottom-1 left-4 w-4 h-1 bg-accent rounded-full;
+            }
+            .prize-item {
+                @apply flex items-center justify-center w-12 h-12 rounded-full font-medium shadow-prize transition-all;
+                background: linear-gradient(145deg, #ffffff 0%, #f1f1f1 100%);
+            }
+            .prize-item:hover {
+                @apply transform scale-110 shadow-lg;
+                background: linear-gradient(145deg, #ffffff 0%, #e6e6e6 100%);
+            }
+            .header-bg {
+                background: linear-gradient(135deg, #FF5A5F 0%, #FC642D 100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-blue-100 min-h-screen py-6 px-4">
+    <div class="max-w-md mx-auto">
+        <!-- 顶部图片展示 -->
+        <div class="flex">
+            <img src="151-001.png" class="w-1/4 rounded-lg ">
+            <img src="151-004.png" class="w-1/4 rounded-lg ">
+            <img src="151-025.png" class="w-1/4 rounded-lg ">
+            <img src="151-094.png" class="w-1/4 rounded-lg ">
+        </div>
+
+        <!-- 头部卡片 -->
+        <div class="header-bg rounded-t-2xl p-6 text-center text-white shadow-xl">
+            <h1 class="text-3xl font-extrabold mb-2 tracking-wide">部落潮玩一番赏</h1>
+            <p class="text-white/90 text-sm">惊喜大奖等你来抽</p>
+            <div class="mt-4 flex justify-center">
+                <span
+                    class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-medium backdrop-blur-sm">限时活动</span>
+            </div>
+        </div>
+
+        <!-- 主要内容 -->
+        <div class="bg-white rounded-b-2xl shadow-card overflow-hidden"
+            style="background-image: url('pikachu.jpg'); background-size: cover; background-position: center;">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-dark mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent mr-2" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4H5z" />
+                    </svg>
+                    赏品对照表
+                </h2>
+
+                <!-- 奖项列表 -->
+                <div class="space-y-2">
+                    <script>
+                        const prizes = [
+                            { name: 'SP 奖', tags: ['151 冰箱贴'], image: '151-001.png', count: ['1'], redeemed: [] },
+                            { name: 'A 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2'], redeemed: ['1'] },
+                            { name: 'B 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2'], redeemed: [] },
+                            { name: 'C 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2'], redeemed: ['1', '2'] },
+                            { name: 'D 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2', '3'], redeemed: ['2'] },
+                            { name: 'E 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2', '3', '4'], redeemed: [] },
+                            { name: 'F 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2', '3', '4', '5'], redeemed: ['3', '4'] },
+                            { name: 'G 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'], redeemed: ['2'] },
+                            { name: 'H 奖', tags: ['151 望吧包'], image: 'https://img.pokemondb.net/artwork/pikachu.jpg', count: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'], redeemed: ['1', '4', '7'] },
+                        ];
+
+                        window.addEventListener('DOMContentLoaded', () => {
+                            const container = document.getElementById('prize-list');
+                            prizes.forEach(prize => {
+                                const div = document.createElement('div');
+                                div.className = "bg-white opacity-90 p-2 rounded shadow";
+                                div.innerHTML = `
+              <div class="flex items-center space-x-2 mb-2">
+                <img src="${prize.image}" alt="Pikachu" class="w-10 h-10">
+                <div class="text-sm font-bold">${prize.name}</div>
+                <div class="bg-black text-white px-2 py-1 rounded text-sm">${prize.tags.join(', ')}</div>
+              </div>
+              <div class="flex flex-wrap gap-1">
+                ${prize.count.map(n => `
+                  <div class="w-6 h-6 text-xs flex items-center justify-center font-bold
+                    ${prize.redeemed.includes(n) ? 'bg-gray-600 text-white' : 'bg-white'}
+                    border border-gray-300"
+                    style="clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%)">
+                    ${n}
+                  </div>`).join('')}
+              </div>
+            `;
+                                container.appendChild(div);
+                            });
+                        });
+                    </script>
+                    <div id="prize-list"></div>
+                </div>
+
+                <!-- SP赏 -->
+                <!-- <div class="mb-6">
+                    <div class="prize-category">SP赏</div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="prize-item">1</div>
+                    </div>
+                </div> -->
+
+                <!-- A-H赏 -->
+                <!-- <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <div class="prize-category">A赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">B赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">C赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">D赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">E赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">F赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">G赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="prize-category">H赏</div>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="prize-item">1</div>
+                            <div class="prize-item">2</div>
+                            <div class="prize-item">3</div>
+                            <div class="prize-item">4</div>
+                            <div class="prize-item">5</div>
+                            <div class="prize-item">6</div>
+                            <div class="prize-item">7</div>
+                            <div class="prize-item">8</div>
+                            <div class="prize-item">9</div>
+                            <div class="prize-item">10</div>
+                            <div class="prize-item">11</div>
+                            <div class="prize-item">12</div>
+                            <div class="prize-item">13</div>
+                            <div class="prize-item">14</div>
+                            <div class="prize-item">15</div>
+                            <div class="prize-item">16</div>
+                            <div class="prize-item">17</div>
+                            <div class="prize-item">18</div>
+                            <div class="prize-item">19</div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- 分割线 -->
+                <div class="my-8 border-t border-dashed border-gray-200 relative">
+                    <div
+                        class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white px-4 text-gray-400 text-sm">
+                        活动规则</div>
+                </div>
+
+                <!-- 说明区域 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-5 rounded-xl border border-yellow-200">
+                    <div class="flex items-start mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-yellow-600 mt-0.5 mr-2 flex-shrink-0" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-dark mb-2">领赏说明</h3>
+                            <p class="text-gray-700 text-sm">在部落潮玩店铺再次消费任意商品即可领取赏品</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center bg-white p-3 rounded-lg mb-3 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <span class="font-bold text-primary">消费满200元赠送1张一番赏</span>
+                    </div>
+
+                    <div class="flex items-center text-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>有效期：下单后30天内有效</span>
+                    </div>
+                </div>
+
+                <!-- 参与按钮 -->
+                <button
+                    class="mt-8 w-full py-3 bg-gradient-to-r from-primary to-accent rounded-xl text-white font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    立即参与抽赏
+                </button>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="text-center text-xs text-gray-500 mt-6">
+            © 2025 部落潮玩 版权所有
+        </div>
+    </div>
+</body>
+
+</html>
